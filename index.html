@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengumuman Kelulusan SD Negeri Telaga Pange 2024/2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f7f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    main {
+      margin-top: 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #0077cc;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e6f7ff;
+      border-left: 5px solid #0077cc;
+      border-radius: 5px;
+    }
+    .notfound {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #ffe6e6;
+      border-left: 5px solid #cc0000;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pengumuman Kelulusan</h1>
+    <p>SD Negeri Telaga Pange<br>Tahun Pelajaran 2024/2025</p>
+  </header>
+  <main>
+    <h2>Cek Kelulusan</h2>
+    <label for="nisn">Masukkan NISN:</label>
+    <input type="text" id="nisn" placeholder="Contoh: 3136732350">
+    <button onclick="cekKelulusan()">Cek</button>
+    <div id="output"></div>
+  </main>
+
+  <script>
+    const dataSiswa = {
+      "3136732350": ["AGIL PRATAMA TAMHER", "LULUS", "85,55"],
+      "3136816465": ["ALWAN MUHAMMAD SUAIDIN", "LULUS", "86,85"],
+      "3129782401": ["ANDI AFIQAH", "LULUS", "87,45"],
+      "3125323359": ["ANDI RAMDHAN RAMLY", "LULUS", "86,48"],
+      "3123785684": ["ARYANI AINUN", "LULUS", "86,40"],
+      "3138061705": ["AZIZAN SAPUTRA", "LULUS", "88,68"],
+      "3138861216": ["FAIZA NAZWA SAFITRI", "LULUS", "86,25"],
+      "3136951193": ["FANIRA", "LULUS", "86,43"],
+      "3132164647": ["FATAR HIDAYAH", "LULUS", "87,88"],
+      "3139200179": ["HAIKAL", "LULUS", "85,85"],
+      "0123554364": ["KAYLA", "LULUS", "85,35"],
+      "3138895614": ["LEE JAEHAN FARHAT", "LULUS", "88,35"],
+      "3131191997": ["MUHAMAD ALFARIS", "LULUS", "87,23"],
+      "3133084179": ["NAVIRA PUTRI", "LULUS", "86,20"],
+      "3124879522": ["SUHARTIN", "LULUS", "86,03"],
+      "3134666824": ["ZAHRAAN AFIF ARIFIN", "LULUS", "86,43"],
+      "3136964849": ["ZIDAN MUSARAFAH", "LULUS", "86,83"]
+    };
+
+    function cekKelulusan() {
+      const nisn = document.getElementById("nisn").value.trim();
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+
+      if (dataSiswa[nisn]) {
+        const [nama, status, nilai] = dataSiswa[nisn];
+        output.innerHTML = `
+          <div class="result">
+            <p><strong>Nama:</strong> ${nama}</p>
+            <p><strong>Status:</strong> ${status}</p>
+            <p><strong>Nilai Akhir:</strong> ${nilai}</p>
+          </div>
+        `;
+      } else {
+        output.innerHTML = `
+          <div class="notfound">
+            <p>NISN tidak ditemukan. Silakan periksa kembali.</p>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
